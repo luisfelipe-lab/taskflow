@@ -1,0 +1,83 @@
+/* Nome DEVE terminar em .module.css — é isso que avisa o Vite pra
+   gerar classes únicas (ex: .tarefa vira TarefaItem_tarefa__a1b2c). */
+
+.tarefa {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background-color: #1B2A3B;
+  border: 1px solid #1E3A5F;
+  border-left: 4px solid #94A3B8;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: grab;
+  transition: background-color 0.2s ease;
+}
+
+.tarefa:hover {
+  background-color: #1E3A5F;
+}
+
+.concluida {
+  opacity: 0.5;
+}
+
+.arrastando {
+  opacity: 0.4;
+}
+
+.conteudoTexto {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nomePessoa {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.localizacao {
+  font-size: 0.72rem;
+  color: #64748B;
+}
+
+.btnMover {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.btnMover:hover {
+  color: #F5A623;
+  background-color: #0D1B2A;
+}
+
+.btnDeletar {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #94A3B8;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.btnDeletar:hover {
+  color: #EF4444;
+  background-color: #0D1B2A;
+}

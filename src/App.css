@@ -1,0 +1,172 @@
+/* ── Reset ─────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base da aplicação ─────────────────────────────────── */
+body {
+  background-color: #0D1B2A;
+  color: white;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+/* ── Layout com Sidebar ────────────────────────────────── */
+.app-layout {
+  display: flex;
+}
+
+.app-conteudo {
+  flex: 1;
+  margin-left: 220px; /* largura fixa da Sidebar (position: fixed) */
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.header {
+  padding: 32px 20px 20px;
+  text-align: center;
+}
+
+.header h1 {
+  color: #F5A623;
+  font-size: 2rem;
+}
+
+.header p {
+  color: #94A3B8;
+  margin-top: 4px;
+}
+
+/* ── Quadro Kanban ─────────────────────────────────────── */
+.kanban {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.kanban-coluna {
+  flex: 1;
+  min-width: 260px;
+  background-color: #142942;
+  border: 1px solid #22405E;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.kanban-coluna-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.kanban-coluna-cabecalho h2 {
+  font-size: 0.95rem;
+  color: #E2E8F0;
+}
+
+.kanban-coluna-acoes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kanban-contador {
+  background-color: #0D1B2A;
+  color: #94A3B8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+}
+
+.kanban-btn-add,
+.kanban-btn-limpar {
+  background-color: #0D1B2A;
+  color: #94A3B8;
+  border: 1px solid #22405E;
+  border-radius: 6px;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.kanban-btn-add:hover {
+  background-color: #F5A623;
+  color: #0D1B2A;
+  border-color: #F5A623;
+}
+
+.kanban-btn-limpar:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+  border-color: #EF4444;
+}
+
+.lista-tarefas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.msg-vazia {
+  text-align: center;
+  color: #64748B;
+  padding: 24px 0;
+  font-size: 0.85rem;
+}
+
+/* ── Footer ────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  color: #64748B;
+  font-size: 0.8rem;
+  padding: 24px 0;
+}
+
+/* ── Página 404 ────────────────────────────────────────── */
+.nao-encontrada {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.nao-encontrada h1 {
+  font-size: 4rem;
+  color: #F5A623;
+}
+
+.nao-encontrada p {
+  color: #94A3B8;
+}
+
+.nao-encontrada a {
+  color: #38BDF8;
+  margin-top: 8px;
+}
