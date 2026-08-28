@@ -3,16 +3,38 @@ import styles from './ModalTarefa.module.css';
 import { consultarEndereco, montarLocalizacao } from '../services/viaCep';
 import { mascararCep } from '../services/mascaras';
 
+// Rótulo do campo de atividade muda conforme a coluna — é a mesma
+// palavra "atividade" combinada com o particípio de cada coluna.
+const LABEL_ATIVIDADE = {
+  afazer: 'Atividade a fazer',
+  andamento: 'Atividade em andamento',
+  concluido: 'Atividade concluída',
+};
+
+const OPCOES_PRIORIDADE = [
+  { valor: 'baixa', rotulo: 'Baixa' },
+  { valor: 'media', rotulo: 'Média' },
+  { valor: 'alta', rotulo: 'Alta' },
+];
+
 // tarefa = null   → modal em modo CRIAÇÃO
 // tarefa = objeto → modal em modo EDIÇÃO (campos preenchidos)
 // coluna          → em qual coluna a tarefa nasce (só importa na criação;
 //                    na edição, a tarefa mantém a coluna que já tinha)
 function ModalTarefa({ aberto, onFechar, onSalvar, tarefa = null, coluna = 'afazer' }) {
   const [nome, setNome] = useState('');
+  const [atividade, setAtividade] = useState('');
+  const [prioridade, setPrioridade] = useState('media');
   const [cep, setCep] = useState('');
   const [localizacaoAtual, setLocalizacaoAtual] = useState(null); // o que já está salvo (modo edição)
   const [buscandoCep, setBuscandoCep] = useState(false);
   const [salvando, setSalvando] = useState(false);
+
+  // Em edição a tarefa mantém a coluna que já tinha; em criação é a
+  // coluna onde o usuário clicou no "+". É essa coluna "efetiva" que
+  // decide o rótulo do campo de atividade.
+  const colunaEfetiva = tarefa?.coluna || coluna;
+  const labelAtividade = LABEL_ATIVIDADE[colunaEfetiva] || 'Atividade';
 
   // Preenche os campos toda vez que o modal abre — seja pra criar
   // (tarefa null → campos vazios) ou editar (tarefa preenchida).
@@ -20,9 +42,13 @@ function ModalTarefa({ aberto, onFechar, onSalvar, tarefa = null, coluna = 'afaz
     if (!aberto) return;
     if (tarefa) {
       setNome(tarefa.nome || '');
+      setAtividade(tarefa.atividade || '');
+      setPrioridade(tarefa.prioridade || 'media');
       setLocalizacaoAtual(tarefa.localizacao || null);
     } else {
       setNome('');
+      setAtividade('');
+      setPrioridade('media');
       setLocalizacaoAtual(null);
     }
     setCep(''); // CEP sempre começa vazio — só é usado se o usuário digitar um novo
@@ -52,7 +78,8 @@ function ModalTarefa({ aberto, onFechar, onSalvar, tarefa = null, coluna = 'afaz
 
   const handleSalvar = async () => {
     const nomeLimpo = nome.trim();
-    if (nomeLimpo === '') return; // validação: não salva sem nome
+    const atividadeLimpa = atividade.trim();
+    if (nomeLimpo === '' || atividadeLimpa === '') return; // validação: não salva sem nome/atividade
 
     setSalvando(true);
     setBuscandoCep(cep.length === 8);
@@ -69,8 +96,10 @@ function ModalTarefa({ aberto, onFechar, onSalvar, tarefa = null, coluna = 'afaz
     onSalvar({
       id: tarefa?.id, // undefined = criar | existente = editar
       nome: nomeLimpo,
+      atividade: atividadeLimpa,
+      prioridade,
       localizacao: localizacaoFinal,
-      coluna: tarefa?.coluna || coluna,
+      coluna: colunaEfetiva,
     });
 
     setSalvando(false);
@@ -98,6 +127,30 @@ function ModalTarefa({ aberto, onFechar, onSalvar, tarefa = null, coluna = 'afaz
           onChange={(evento) => setNome(evento.target.value)}
           onKeyDown={(evento) => evento.key === 'Enter' && handleSalvar()}
         />
+
+        <input
+          className={styles.input}
+          type="text"
+          placeholder={labelAtividade}
+          value={atividade}
+          onChange={(evento) => setAtividade(evento.target.value)}
+          onKeyDown={(evento) => evento.key === 'Enter' && handleSalvar()}
+        />
+
+        <label className={styles.labelPrioridade}>
+          Prioridade
+          <select
+            className={styles.input}
+            value={prioridade}
+            onChange={(evento) => setPrioridade(evento.target.value)}
+          >
+            {OPCOES_PRIORIDADE.map((opcao) => (
+              <option key={opcao.valor} value={opcao.valor}>
+                {opcao.rotulo}
+              </option>
+            ))}
+          </select>
+        </label>
 
         <input
           className={styles.input}

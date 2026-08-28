@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import RotaPrivada from './components/RotaPrivada';
 import Dashboard from './pages/Dashboard';
@@ -9,13 +9,18 @@ import NaoEncontrada from './pages/NaoEncontrada';
 // App só cuida de layout e rotas — nada de estado de autenticação
 // aqui (isso vive no AuthContext, consumido via useAuth() por quem
 // precisar). A Sidebar fica FORA do <Routes>, então aparece em todas
-// as páginas sem ser remontada quando a rota muda.
+// as páginas sem ser remontada quando a rota muda — EXCETO na página
+// de login, que fica sozinha na tela (sem o link "Sobre" nem o resto
+// da navegação, que não fazem sentido antes de o usuário estar logado).
 function App() {
-  return (
-    <div className="app-layout">
-      <Sidebar />
+  const location = useLocation();
+  const naPaginaDeLogin = location.pathname === '/login';
 
-      <main className="app-conteudo">
+  return (
+    <div className={naPaginaDeLogin ? 'app-layout app-layout-sem-sidebar' : 'app-layout'}>
+      {!naPaginaDeLogin && <Sidebar />}
+
+      <main className={naPaginaDeLogin ? 'app-conteudo app-conteudo-cheio' : 'app-conteudo'}>
         <Routes>
           <Route
             path="/"

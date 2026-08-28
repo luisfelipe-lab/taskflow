@@ -8,23 +8,23 @@
 }
 
 .sobre-container h1 {
-  color: #F5A623;
+  color: var(--cor-6);
   font-size: 1.8rem;
 }
 
 .sobre-container h2 {
-  color: #E2E8F0;
+  color: var(--cor-6);
   font-size: 1.1rem;
   margin-top: 12px;
 }
 
 .sobre-container p {
-  color: #94A3B8;
+  color: var(--cor-5);
   line-height: 1.6;
 }
 
 .sobre-container ul {
-  color: #94A3B8;
+  color: var(--cor-5);
   padding-left: 20px;
   line-height: 1.8;
 }

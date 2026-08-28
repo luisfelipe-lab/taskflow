@@ -5,10 +5,25 @@
   padding: 0;
 }
 
+/* ── Paleta de cores ───────────────────────────────────────
+   Nova paleta aplicada ao "fundo" da aplicação (body, sidebar,
+   títulos, textos, páginas Sobre/404) — os CONTAINERS (colunas do
+   kanban, card do modal, card do login, cards de tarefa) e os
+   BOTÕES continuam com as cores antigas, de propósito, então essas
+   variáveis não são usadas neles. */
+:root {
+  --cor-1: #06141B; /* mais escura */
+  --cor-2: #11212D;
+  --cor-3: #253745;
+  --cor-4: #4A5C6A;
+  --cor-5: #9BA8AB;
+  --cor-6: #CCD0CF; /* mais clara */
+}
+
 /* ── Base da aplicação ─────────────────────────────────── */
 body {
-  background-color: #0D1B2A;
-  color: white;
+  background-color: var(--cor-1);
+  color: var(--cor-6);
   font-family: 'Inter', Arial, sans-serif;
   font-size: 16px;
   min-height: 100vh;
@@ -23,6 +38,11 @@ body {
   flex: 1;
   margin-left: 220px; /* largura fixa da Sidebar (position: fixed) */
   min-height: 100vh;
+}
+
+/* Página de login: sem Sidebar, então o conteúdo ocupa a tela inteira. */
+.app-conteudo-cheio {
+  margin-left: 0;
 }
 
 .container {
@@ -41,12 +61,12 @@ body {
 }
 
 .header h1 {
-  color: #F5A623;
+  color: var(--cor-6);
   font-size: 2rem;
 }
 
 .header p {
-  color: #94A3B8;
+  color: var(--cor-5);
   margin-top: 4px;
 }
 
@@ -141,7 +161,7 @@ body {
 /* ── Footer ────────────────────────────────────────────── */
 footer {
   text-align: center;
-  color: #64748B;
+  color: var(--cor-5);
   font-size: 0.8rem;
   padding: 24px 0;
 }
@@ -159,14 +179,14 @@ footer {
 
 .nao-encontrada h1 {
   font-size: 4rem;
-  color: #F5A623;
+  color: var(--cor-6);
 }
 
 .nao-encontrada p {
-  color: #94A3B8;
+  color: var(--cor-5);
 }
 
 .nao-encontrada a {
-  color: #38BDF8;
+  color: var(--cor-6);
   margin-top: 8px;
 }

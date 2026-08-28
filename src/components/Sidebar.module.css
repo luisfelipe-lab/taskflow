@@ -1,8 +1,8 @@
 .sidebar {
   width: 220px;
   min-height: 100vh;
-  background-color: #0D1B2A;
-  border-right: 1px solid #1E3A5F;
+  background-color: var(--cor-2);
+  border-right: 1px solid var(--cor-3);
   padding: 24px 16px;
   position: fixed;
   top: 0;
@@ -13,7 +13,7 @@
 }
 
 .logo h1 {
-  color: #F5A623;
+  color: var(--cor-6);
   font-size: 1.4rem;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .link {
-  color: #94A3B8;
+  color: var(--cor-5);
   text-decoration: none;
   padding: 10px 14px;
   border-radius: 6px;
@@ -33,15 +33,15 @@
 }
 
 .link:hover {
-  background-color: #1B2A3B;
-  color: #E2E8F0;
+  background-color: var(--cor-3);
+  color: var(--cor-6);
 }
 
 /* NavLink adiciona a classe "ativo" (via linkClass) quando a rota
    corresponde à URL atual. */
 .ativo {
-  background-color: #1E3A5F;
-  color: #38BDF8;
+  background-color: var(--cor-4);
+  color: var(--cor-6);
   font-weight: 700;
 }
 

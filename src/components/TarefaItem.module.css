@@ -36,6 +36,13 @@
   gap: 2px;
 }
 
+.linhaTopo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .nomePessoa {
   flex: 1;
   font-size: 1rem;
@@ -43,9 +50,42 @@
   color: white;
 }
 
+.atividade {
+  font-size: 0.82rem;
+  color: #CBD5E1;
+}
+
 .localizacao {
   font-size: 0.72rem;
   color: #64748B;
+}
+
+/* Selo de prioridade — cores semânticas (vermelho/amarelo/verde),
+   propositalmente fora da paleta neutra pra continuar chamando
+   atenção mesmo dentro do card. */
+.prioridade {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.prioridadeAlta {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+}
+
+.prioridadeMedia {
+  background-color: rgba(245, 166, 35, 0.15);
+  color: #F5A623;
+}
+
+.prioridadeBaixa {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #22C55E;
 }
 
 .btnMover {

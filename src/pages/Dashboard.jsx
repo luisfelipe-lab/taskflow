@@ -12,10 +12,10 @@ const ORDEM_COLUNAS = ['afazer', 'andamento', 'concluido'];
 // Tarefas de exemplo — só usadas na primeiríssima vez que o app abre,
 // quando ainda não existe nada salvo no localStorage.
 const TAREFAS_INICIAIS = [
-  { id: crypto.randomUUID(), nome: 'Ana Lima', coluna: 'afazer', localizacao: null },
-  { id: crypto.randomUUID(), nome: 'Carlos Souza', coluna: 'andamento', localizacao: null },
-  { id: crypto.randomUUID(), nome: 'Beatriz Alves', coluna: 'afazer', localizacao: null },
-  { id: crypto.randomUUID(), nome: 'Diego Ramos', coluna: 'concluido', localizacao: null },
+  { id: crypto.randomUUID(), nome: 'Ana Lima', atividade: 'Levantar requisitos do sistema', prioridade: 'alta', coluna: 'afazer', localizacao: null },
+  { id: crypto.randomUUID(), nome: 'Carlos Souza', atividade: 'Implementar tela de login', prioridade: 'media', coluna: 'andamento', localizacao: null },
+  { id: crypto.randomUUID(), nome: 'Beatriz Alves', atividade: 'Escrever documentação da API', prioridade: 'baixa', coluna: 'afazer', localizacao: null },
+  { id: crypto.randomUUID(), nome: 'Diego Ramos', atividade: 'Configurar ambiente de deploy', prioridade: 'media', coluna: 'concluido', localizacao: null },
 ];
 
 // Lê o localStorage UMA vez, na inicialização. Passar uma função pro

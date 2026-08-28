@@ -1,6 +1,6 @@
 .login-container {
   min-height: 100vh;
-  background-color: #0D1B2A;
+  background-color: var(--cor-1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,13 +20,13 @@
 }
 
 .login-logo {
-  color: #F5A623;
+  color: var(--cor-6);
   font-size: 2rem;
   text-align: center;
 }
 
 .login-subtitulo {
-  color: #64748B;
+  color: var(--cor-5);
   font-size: 0.9rem;
   text-align: center;
 }

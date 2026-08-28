@@ -44,6 +44,18 @@
   border-color: #38BDF8;
 }
 
+.labelPrioridade {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #94A3B8;
+  font-size: 0.85rem;
+}
+
+.labelPrioridade select {
+  cursor: pointer;
+}
+
 .localizacao {
   color: #64748B;
   font-size: 0.8rem;
