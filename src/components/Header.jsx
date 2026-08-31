@@ -1,6 +1,7 @@
-// Header voltou a ser simples: só título e subtítulo. Não existe mais
-// um "cliente" global logado — cada tarefa agora carrega seu próprio
-// nome de pessoa, exibido no TarefaItem, não aqui.
+// ==================================================
+// [TaskFlow] — Componente Header (v1.0)
+// ==================================================
+
 function Header({ titulo, subtitulo }) {
   return (
     <header className="header">
@@ -11,5 +12,4 @@ function Header({ titulo, subtitulo }) {
     </header>
   );
 }
-
 export default Header;

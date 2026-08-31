@@ -1,34 +1,38 @@
-import { createContext, useContext, useState } from 'react';
+// ==================================================
+// [TaskFlow] — Contexto de Autenticação (v1.0)
+// ==================================================
 
-// createContext() cria o canal de comunicação. O valor padrão (null) só
-// é usado se algum componente tentar consumir o contexto sem estar
-// dentro do AuthProvider — o que consideramos um erro de uso (ver
-// useAuth abaixo).
+import { createContext, useContext, useEffect, useState } from 'react';
+import { getToken, clearToken } from '../services/api';
 const AuthContext = createContext(null);
-
-// AuthProvider concentra o estado "logado" e as ações login/logout num
-// único lugar. Qualquer componente dentro dele acessa isso via
-// useAuth(), sem precisar receber nada por props (fim do prop drilling).
 export function AuthProvider({ children }) {
-  const [logado, setLogado] = useState(false);
-
+  const [logado, setLogado] = useState(() => Boolean(getToken()));
   function login() {
     setLogado(true);
   }
-
   function logout() {
+    clearToken();
     setLogado(false);
   }
-
+  useEffect(() => {
+    function aoExpirarSessao() {
+      setLogado(false);
+    }
+    window.addEventListener('taskflow:sessao-expirada', aoExpirarSessao);
+    return () => window.removeEventListener('taskflow:sessao-expirada', aoExpirarSessao);
+  }, []);
   return (
-    <AuthContext.Provider value={{ logado, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        logado,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
-
-// Hook customizado que encapsula useContext — os componentes importam
-// só useAuth, nunca precisam saber que AuthContext existe por trás.
 export function useAuth() {
   const context = useContext(AuthContext);
   if (!context) {

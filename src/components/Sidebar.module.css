@@ -1,3 +1,7 @@
+/* ================================================== */
+/* [TaskFlow] — Estilos — Componente Sidebar (v1.0) */
+/* ================================================== */
+
 .sidebar {
   width: 220px;
   min-height: 100vh;
@@ -37,8 +41,6 @@
   color: var(--cor-6);
 }
 
-/* NavLink adiciona a classe "ativo" (via linkClass) quando a rota
-   corresponde à URL atual. */
 .ativo {
   background-color: var(--cor-4);
   color: var(--cor-6);

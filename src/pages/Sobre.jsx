@@ -1,16 +1,16 @@
-import './Sobre.css';
+// ==================================================
+// [TaskFlow] — Página Sobre (v1.0)
+// ==================================================
 
-// Página pública — não passa pela RotaPrivada, então é acessível mesmo
-// sem login. Estática: não precisa de estado.
+import './Sobre.css';
 function Sobre() {
   return (
     <main className="sobre-container">
       <h1>Sobre o TaskFlow</h1>
       <p>
-        TaskFlow é um quadro Kanban para organizar tarefas em três colunas
-        — A Fazer, Em Andamento e Concluído — com criação e edição pelo
-        modal, busca automática de endereço por CEP e tudo salvo no
-        navegador, mesmo depois de recarregar a página.
+        TaskFlow é um quadro Kanban para organizar tarefas em três colunas — A Fazer, Em Andamento e
+        Concluído — com criação e edição pelo modal, busca automática de endereço por CEP e tudo
+        salvo no navegador, mesmo depois de recarregar a página.
       </p>
 
       <h2>Tecnologias usadas</h2>
@@ -26,5 +26,4 @@ function Sobre() {
     </main>
   );
 }
-
 export default Sobre;

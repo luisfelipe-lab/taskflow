@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+// ==================================================
+// [TaskFlow] — Página 404 (v1.0)
+// ==================================================
 
-// Rota curinga (path="*" no App.jsx) — captura qualquer URL que não
-// corresponda a nenhuma das rotas cadastradas.
+import { Link } from 'react-router-dom';
 function NaoEncontrada() {
   return (
     <main className="nao-encontrada">
@@ -11,5 +12,4 @@ function NaoEncontrada() {
     </main>
   );
 }
-
 export default NaoEncontrada;

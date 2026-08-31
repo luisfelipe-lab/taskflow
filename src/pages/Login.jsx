@@ -1,38 +1,36 @@
+// ==================================================
+// [TaskFlow] — Página de Login (v1.0)
+// ==================================================
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { fazerLogin, setToken } from '../services/api';
 import './Login.css';
-
-// Credenciais fixas — apenas para fins didáticos. Autenticação de
-// verdade (com banco de dados e hash de senha) fica pro módulo de
-// back-end, mais adiante no curso.
 function Login() {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
   const [shake, setShake] = useState(false);
-
+  const [entrando, setEntrando] = useState(false);
   const { login } = useAuth();
-  // useNavigate é usado AQUI dentro (num handler, após o clique) — se
-  // fosse uma condição avaliada direto no render, usaríamos <Navigate>
-  // (é o que a RotaPrivada faz).
   const navigate = useNavigate();
-
-  function handleLogin() {
-    if (usuario === 'admin' && senha === '1234') {
+  async function handleLogin() {
+    setErro('');
+    setEntrando(true);
+    try {
+      const resposta = await fazerLogin(usuario, senha);
+      setToken(resposta.token);
       login();
       navigate('/');
-      return;
+    } catch (erroApi) {
+      setErro(erroApi.message);
+      setShake(true);
+      setTimeout(() => setShake(false), 500);
+    } finally {
+      setEntrando(false);
     }
-
-    setErro('Usuário ou senha incorretos');
-    setShake(true);
-    // Remove a classe depois da animação terminar, pra poder disparar
-    // de novo numa próxima tentativa errada (senão o CSS não reanima
-    // uma classe que já está aplicada).
-    setTimeout(() => setShake(false), 500);
   }
-
   return (
     <div className="login-container">
       <div className={`login-card ${shake ? 'shake' : ''}`}>
@@ -45,7 +43,8 @@ function Login() {
           placeholder="Usuário"
           value={usuario}
           onChange={(e) => setUsuario(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+          onKeyDown={(e) => e.key === 'Enter' && !entrando && handleLogin()}
+          disabled={entrando}
         />
 
         <input
@@ -54,17 +53,17 @@ function Login() {
           placeholder="Senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+          onKeyDown={(e) => e.key === 'Enter' && !entrando && handleLogin()}
+          disabled={entrando}
         />
 
         {erro && <p className="login-erro">{erro}</p>}
 
-        <button type="button" className="login-btn" onClick={handleLogin}>
-          Entrar
+        <button type="button" className="login-btn" onClick={handleLogin} disabled={entrando}>
+          {entrando ? 'Entrando...' : 'Entrar'}
         </button>
       </div>
     </div>
   );
 }
-
 export default Login;

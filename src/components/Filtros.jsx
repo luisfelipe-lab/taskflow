@@ -1,11 +1,21 @@
-// As 3 opções de filtro viram um array em vez de 3 botões escritos à mão —
-// assim um único .map() gera todos, igual fizemos com as tarefas.
-const OPCOES_FILTRO = [
-  { valor: 'todas', rotulo: 'Todas' },
-  { valor: 'pendentes', rotulo: 'Pendentes' },
-  { valor: 'concluidas', rotulo: 'Concluídas' },
-];
+// ==================================================
+// [TaskFlow] — Componente Filtros (v1.0)
+// ==================================================
 
+const OPCOES_FILTRO = [
+  {
+    valor: 'todas',
+    rotulo: 'Todas',
+  },
+  {
+    valor: 'pendentes',
+    rotulo: 'Pendentes',
+  },
+  {
+    valor: 'concluidas',
+    rotulo: 'Concluídas',
+  },
+];
 function Filtros({ filtroAtivo, aoMudarFiltro }) {
   return (
     <div id="filtros">
@@ -22,5 +32,4 @@ function Filtros({ filtroAtivo, aoMudarFiltro }) {
     </div>
   );
 }
-
 export default Filtros;

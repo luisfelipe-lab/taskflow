@@ -1,5 +1,6 @@
-/* Nome DEVE terminar em .module.css — é isso que avisa o Vite pra
-   gerar classes únicas (ex: .tarefa vira TarefaItem_tarefa__a1b2c). */
+/* ================================================== */
+/* [TaskFlow] — Estilos — Componente TarefaItem (v1.0) */
+/* ================================================== */
 
 .tarefa {
   display: flex;
@@ -60,9 +61,6 @@
   color: #64748B;
 }
 
-/* Selo de prioridade — cores semânticas (vermelho/amarelo/verde),
-   propositalmente fora da paleta neutra pra continuar chamando
-   atenção mesmo dentro do card. */
 .prioridade {
   flex-shrink: 0;
   font-size: 0.68rem;

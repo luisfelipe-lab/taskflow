@@ -1,3 +1,7 @@
+// ==================================================
+// [TaskFlow] — Componente Rodapé (v1.0)
+// ==================================================
+
 function Rodape() {
   return (
     <footer>
@@ -5,5 +9,4 @@ function Rodape() {
     </footer>
   );
 }
-
 export default Rodape;

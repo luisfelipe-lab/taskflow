@@ -1,26 +1,22 @@
-/* ── Reset ─────────────────────────────────────────────── */
+/* ================================================== */
+/* [TaskFlow] — Estilos Globais (v1.0) */
+/* ================================================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* ── Paleta de cores ───────────────────────────────────────
-   Nova paleta aplicada ao "fundo" da aplicação (body, sidebar,
-   títulos, textos, páginas Sobre/404) — os CONTAINERS (colunas do
-   kanban, card do modal, card do login, cards de tarefa) e os
-   BOTÕES continuam com as cores antigas, de propósito, então essas
-   variáveis não são usadas neles. */
 :root {
-  --cor-1: #06141B; /* mais escura */
+  --cor-1: #06141B;
   --cor-2: #11212D;
   --cor-3: #253745;
   --cor-4: #4A5C6A;
   --cor-5: #9BA8AB;
-  --cor-6: #CCD0CF; /* mais clara */
+  --cor-6: #CCD0CF;
 }
 
-/* ── Base da aplicação ─────────────────────────────────── */
 body {
   background-color: var(--cor-1);
   color: var(--cor-6);
@@ -29,18 +25,16 @@ body {
   min-height: 100vh;
 }
 
-/* ── Layout com Sidebar ────────────────────────────────── */
 .app-layout {
   display: flex;
 }
 
 .app-conteudo {
   flex: 1;
-  margin-left: 220px; /* largura fixa da Sidebar (position: fixed) */
+  margin-left: 220px;
   min-height: 100vh;
 }
 
-/* Página de login: sem Sidebar, então o conteúdo ocupa a tela inteira. */
 .app-conteudo-cheio {
   margin-left: 0;
 }
@@ -54,7 +48,6 @@ body {
   gap: 16px;
 }
 
-/* ── Header ────────────────────────────────────────────── */
 .header {
   padding: 32px 20px 20px;
   text-align: center;
@@ -70,7 +63,37 @@ body {
   margin-top: 4px;
 }
 
-/* ── Quadro Kanban ─────────────────────────────────────── */
+.mensagem-erro {
+  text-align: center;
+  color: #EF4444;
+  padding: 48px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.mensagem-erro-detalhe {
+  color: var(--cor-5);
+  font-size: 0.85rem;
+  max-width: 420px;
+  margin-bottom: 8px;
+}
+
+.mensagem-erro button {
+  background-color: #1E3A5F;
+  color: #E2E8F0;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.mensagem-erro button:hover {
+  background-color: #274A73;
+}
+
 .kanban {
   display: flex;
   gap: 14px;
@@ -158,7 +181,6 @@ body {
   font-size: 0.85rem;
 }
 
-/* ── Footer ────────────────────────────────────────────── */
 footer {
   text-align: center;
   color: var(--cor-5);
@@ -166,7 +188,6 @@ footer {
   padding: 24px 0;
 }
 
-/* ── Página 404 ────────────────────────────────────────── */
 .nao-encontrada {
   min-height: 100vh;
   display: flex;
